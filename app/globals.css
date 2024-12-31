@@ -2,20 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #01a0a9;
+  border-radius: 10px;
+}
+
+/* Optional: Add hover effect for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #e0e0e0;
+}
+
+html {
+    scroll-behavior: smooth;
   }
+
+  
+  .inter{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 2;
+  }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+p {
+  margin: 0 !important;
 }
+
+.appBg{
+    background-color: #d5fffd;
+}
+
+.fc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
