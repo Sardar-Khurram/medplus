@@ -42,183 +42,189 @@ const Pricing = () => {
           </p>
 
           {/* Image Container */}
-          <div className="imageConatiner sm:p-10 lg:p-32 flex flex-wrap items-center justify-center gap-20 flex-col">
+          <div className="imageConatiner p-2 sm:p-8 lg:p-12 flex flex-wrap items-center justify-center gap-12 flex-col lg:flex-row">
 
-            {/* Image 1*/}
-            <div className=" py-10 border  text-left  flex flex-col gap-10 items-baseline px-7 justify-center bg-[#01a0a9] text-[#ffffff] shadow-2xl sm:rounded-3xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#01a1a9e0] group">
-              {/* Animated background layer */}
-              <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+{/* Smaller Component */}
+<div className="py-6 border text-left flex flex-col gap-4 items-baseline px-6 justify-center bg-[#01a0a9] text-[#ffffff] shadow-md sm:rounded-2xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-sm hover:bg-[#01a1a9e0] group">
+    {/* Animated background layer */}
+    <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
 
-              {/* Above part */}
-              <div className="flex flex-col gap-5">
-                {/* Icon part */}
-                <div className="flex gap-6 z-40">
-                  <img className=" " src="/pricing (1).png" alt="" />
-                  <div className=" flex flex-col items-start justify-center">
-                    <span className="text-xl text-[#e3e0e0]">For Individuals</span>
-                    <span className="text-2xl font-bold">Basic</span>
-                  </div>
-                </div>
-                <p className="text-left z-40 text-[#e3e0e0] text-2xl">Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.</p>
-              </div>
-
-              {/* Middle part */}
-              <div className="flex flex-col gap-5 z-40 text-[#e3e0e0]">
-
-                {/* Price heading */}
-                <h1 className="text-left"><span className='text-7xl text-[#ffffff] font-bold'>$49</span><span className='text-[#e3e0e0d6]'>/month</span></h1>
-
-                {/* Choose Heading */}
-                <h1 className="text-white z-40 text-2xl font-bold text-left">Why Choose us?</h1>
-
-                {/* item 1 */}
-                <div className="flex gap-5">
-                  <span className="icon"><img width={'28px'} src="/check1.svg" alt="" /></span>
-                  <span className="content text-xl">In-clinic and remote.</span>
-                </div>
-                {/* item 2 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Innovative digital tools.</div>
-                </span>
-                {/* item 3 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Flexible access..</div>
-                </span>
-                {/* item 4 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Expert healthcare professionals.</div>
-                </span>
-              </div>
-
-              {/* animated button */}
-              <a href='/' className="text-center text-lg lg:text-2xl relative overflow-hidden px-20 py-6 font-semibold text-[#01a0a9] bg-white rounded-2xl mx-auto transition-all duration-500 group">
-                {/* Button text */}
-                <span className="relative">Get Started</span>
-              </a>
-
+    {/* <div className="absolute top-0 right-0">
+        <input type="checkbox" name="individual" id="individual" />
+    </div> */}
+    {/* Above part */}
+    <div className="flex flex-col gap-3">
+        {/* Icon part */}
+        <div className="flex gap-3 z-40">
+            <img className="w-8 h-8" src="/pricing (1).png" alt="" />
+            <div className="flex flex-col items-start justify-center">
+                <span className="text-sm text-[#e3e0e0]">For Individuals</span>
+                <span className="text-lg font-bold">Basic</span>
             </div>
+        </div>
+        <p className="text-left z-40 text-[#e3e0e0] text-sm">
+            Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.
+        </p>
+    </div>
 
-            {/* Image 2*/}
-            <div className=" py-10 border  text-left  flex flex-col gap-10 items-baseline px-7 justify-center bg-[#01a0a9] text-[#ffffff] shadow-2xl sm:rounded-3xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#01a1a9e0] group">
-              {/* Animated background layer */}
-              <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-right transition-transform duration-500 group-hover:scale-x-100"></span>
+    {/* Middle part */}
+    <div className="flex flex-col gap-3 z-40 text-[#e3e0e0]">
+        {/* Price heading */}
+        <h1 className="text-left">
+            <span className="text-3xl text-[#ffffff] font-bold">$49</span>
+            <span className="text-[#e3e0e0d6] text-sm">/month</span>
+        </h1>
 
-              {/* Above part */}
-              <div className="flex flex-col gap-5">
-                {/* Icon part */}
-                <div className="flex gap-6 z-40 relative">
-                  <img className=" " src="/pricing (2).png" alt="" />
-                  <div className=" flex flex-col items-start justify-center">
-                    <span className="text-xl text-[#e3e0e0]">For Startups</span>
-                    <span className="text-2xl font-bold">Pro</span>
-                  </div>
-                  <span className="absolute py-2 px-3 rounded-xl flex items-center justify-center bg-[#91f9fe4a] right-2">Popular</span>
+        {/* Choose Heading */}
+        <h1 className="text-white z-40 text-base font-bold text-left">Why Choose us?</h1>
+
+        {/* Benefits */}
+        {["In-clinic and remote.", "Innovative digital tools.", "Flexible access.", "Expert healthcare professionals."].map(
+            (text, idx) => (
+                <div key={idx} className="flex gap-2">
+                    <span className="icon">
+                        <img width="16px" src="/check1.svg" alt="" />
+                    </span>
+                    <span className="content text-sm">{text}</span>
                 </div>
-                <p className="text-left z-40 text-[#e3e0e0] text-2xl">Perfect for startups and small clinics looking to offer remote care to their patients, with advanced features and personalized support.</p>
-              </div>
+            )
+        )}
+    </div>
 
-              {/* Middle part */}
-              <div className="flex flex-col gap-5 z-40 text-[#e3e0e0]">
+    {/* Animated button */}
+    <a
+        href="/"
+        className="text-center text-xs lg:text-sm relative overflow-hidden px-12 py-2 font-semibold text-[#01a0a9] bg-white rounded-lg mx-auto transition-all duration-500 group"
+    >
+        {/* Button text */}
+        <span className="relative">Get Started</span>
+    </a>
+</div>
 
-                {/* Price heading */}
-                <h1 className="text-left"><span className='text-7xl text-[#ffffff] font-bold'>$199</span><span className='text-[#e3e0e0d6]'>/month</span></h1>
 
-                {/* Choose Heading */}
-                <h1 className="text-white z-40 text-2xl font-bold text-left">Why Choose us?</h1>
 
-                {/* item 1 */}
-                <div className="flex gap-5">
-                  <span className="icon"><img width={'28px'} src="/check1.svg" alt="" /></span>
-                  <span className="content text-xl">Up to 10 telemedicine consultations per month.</span>
-                </div>
-                {/* item 2 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Remote health monitoring kits for patients.</div>
-                </span>
-                {/* item 3 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Electronic health record (EHR) integration.</div>
-                </span>
-                {/* item 4 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Dedicated account manager and tech support.</div>
-                </span>
-              </div>
+{/* Smaller Component */}
+<div className="py-6 border text-left flex flex-col gap-4 items-baseline px-6 justify-center bg-[#01a0a9] text-[#ffffff] shadow-md sm:rounded-2xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-sm hover:bg-[#01a1a9e0] group">
+    {/* Animated background layer */}
+    <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-right transition-transform duration-500 group-hover:scale-x-100"></span>
 
-              {/* animated button */}
-              <a href='/' className="text-center text-lg lg:text-2xl relative overflow-hidden px-20 py-6 font-semibold text-[#01a0a9] bg-white rounded-2xl mx-auto transition-all duration-500 group">
-                {/* Button text */}
-                <span className="relative">Get Started</span>
-              </a>
-
+    {/* Above part */}
+    <div className="flex flex-col gap-3">
+        {/* Icon part */}
+        <div className="flex gap-3 z-40 relative">
+            <img className="w-8 h-8" src="/pricing (2).png" alt="" />
+            <div className="flex flex-col items-start justify-center">
+                <span className="text-sm text-[#e3e0e0]">For Startups</span>
+                <span className="text-lg font-bold">Pro</span>
             </div>
+            <span className="absolute py-1 px-2 text-xs rounded-lg flex items-center justify-center bg-[#91f9fe4a] right-2">
+                Popular
+            </span>
+        </div>
+        <p className="text-left z-40 text-[#e3e0e0] text-sm">
+            Perfect for startups and small clinics looking to offer remote care to their patients, with advanced features and personalized support.
+        </p>
+    </div>
 
+    {/* Middle part */}
+    <div className="flex flex-col gap-3 z-40 text-[#e3e0e0]">
+        {/* Price heading */}
+        <h1 className="text-left">
+            <span className="text-3xl text-[#ffffff] font-bold">$199</span>
+            <span className="text-[#e3e0e0d6] text-sm">/month</span>
+        </h1>
 
-            {/* Image 3*/}
-            <div className=" py-10 border  text-left  flex flex-col gap-10 items-baseline px-7 justify-center bg-[#01a0a9] text-[#ffffff] shadow-2xl sm:rounded-3xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#01a1a9e0] group">
-              {/* Animated background layer */}
-              <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+        {/* Choose Heading */}
+        <h1 className="text-white z-40 text-base font-bold text-left">Why Choose us?</h1>
 
-              {/* Above part */}
-              <div className="flex flex-col gap-5">
-                {/* Icon part */}
-                <div className="flex gap-6 z-40">
-                  <img className=" " src="/pricing (3).png" alt="" />
-                  <div className=" flex flex-col items-start justify-center">
-                    <span className="text-xl text-[#e3e0e0]">For Individuals</span>
-                    <span className="text-2xl font-bold">Basic</span>
-                  </div>
-                </div>
-                <p className="text-left z-40 text-[#e3e0e0] text-2xl">Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.</p>
-              </div>
-
-              {/* Middle part */}
-              <div className="flex flex-col gap-5 z-40 text-[#e3e0e0]">
-
-                {/* Price heading */}
-                <h1 className="text-left"><span className='text-7xl text-[#ffffff] font-bold'>$499</span><span className='text-[#e3e0e0d6]'>/month</span></h1>
-
-                {/* Choose Heading */}
-                <h1 className="text-white z-40 text-2xl font-bold text-left">Why Choose us?</h1>
-
-                {/* item 1 */}
-                <div className="flex gap-5">
-                  <span className="icon"><img width={'28px'} src="/check1.svg" alt="" /></span>
-                  <span className="content text-xl">In-clinic and remote.</span>
-                </div>
-                {/* item 2 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Innovative digital tools.</div>
+        {/* Benefits */}
+        {[
+            "Up to 10 telemedicine consultations per month.",
+            "Remote health monitoring kits for patients.",
+            "Electronic health record (EHR) integration.",
+            "Dedicated account manager and tech support.",
+        ].map((text, idx) => (
+            <div key={idx} className="flex gap-2">
+                <span className="icon">
+                    <img width="16px" src="/check1.svg" alt="" />
                 </span>
-                {/* item 3 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Flexible access..</div>
-                </span>
-                {/* item 4 */}
-                <span className="flex gap-5">
-                  <div className="icon"><img width={'28px'} src="/check1.svg" alt="" /></div>
-                  <div className="content text-xl">Expert healthcare professionals.</div>
-                </span>
-              </div>
-
-              {/* animated button */}
-              <a href='/' className="text-center text-lg lg:text-2xl relative overflow-hidden px-20 py-6 font-semibold text-[#01a0a9] bg-white rounded-2xl mx-auto transition-all duration-500 group">
-                {/* Button text */}
-                <span className="relative">Get Started</span>
-              </a>
-
+                <span className="content text-xs">{text}</span>
             </div>
+        ))}
+    </div>
+
+    {/* Animated button */}
+    <a
+        href="/"
+        className="text-center text-xs lg:text-sm relative overflow-hidden px-12 py-2 font-semibold text-[#01a0a9] bg-white rounded-lg mx-auto transition-all duration-500 group"
+    >
+        {/* Button text */}
+        <span className="relative">Get Started</span>
+    </a>
+</div>
 
 
-          </div>
+
+{/* Compact Component */}
+<div className="py-6 border text-left flex flex-col gap-4 items-baseline px-6 justify-center bg-[#01a0a9] text-[#ffffff] shadow-md sm:rounded-2xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-sm hover:bg-[#01a1a9e0] group">
+    {/* Animated background layer */}
+    <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+
+    {/* Above part */}
+    <div className="flex flex-col gap-3">
+        {/* Icon part */}
+        <div className="flex gap-3 z-40">
+            <img className="w-8 h-8" src="/pricing (3).png" alt="" />
+            <div className="flex flex-col items-start justify-center">
+                <span className="text-sm text-[#e3e0e0]">For Individuals</span>
+                <span className="text-lg font-bold">Basic</span>
+            </div>
+        </div>
+        <p className="text-left z-40 text-[#e3e0e0] text-sm">
+            Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.
+        </p>
+    </div>
+
+    {/* Middle part */}
+    <div className="flex flex-col gap-3 z-40 text-[#e3e0e0]">
+        {/* Price heading */}
+        <h1 className="text-left">
+            <span className="text-3xl text-[#ffffff] font-bold">$499</span>
+            <span className="text-[#e3e0e0d6] text-sm">/month</span>
+        </h1>
+
+        {/* Choose Heading */}
+        <h1 className="text-white z-40 text-base font-bold text-left">Why Choose us?</h1>
+
+        {/* Benefits */}
+        {[
+            "In-clinic and remote.",
+            "Innovative digital tools.",
+            "Flexible access.",
+            "Expert healthcare professionals.",
+        ].map((text, idx) => (
+            <div key={idx} className="flex gap-2">
+                <span className="icon">
+                    <img width="16px" src="/check1.svg" alt="" />
+                </span>
+                <span className="content text-xs">{text}</span>
+            </div>
+        ))}
+    </div>
+
+    {/* Animated button */}
+    <a
+        href="/"
+        className="text-center text-xs lg:text-sm relative overflow-hidden px-12 py-2 font-semibold text-[#01a0a9] bg-white rounded-lg mx-auto transition-all duration-500 group"
+    >
+        {/* Button text */}
+        <span className="relative">Get Started</span>
+    </a>
+</div>
+
+
+
+</div>
 
         </div>
       </div>

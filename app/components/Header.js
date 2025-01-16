@@ -112,7 +112,7 @@ const Header = () => {
             </a>
 
             {/* animated button */}
-            <a href='/' className="text-sm relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
+            <a href='/registration' className="text-sm relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
               {/* Animated background layer */}
               <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
               {/* Button text */}
