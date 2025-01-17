@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Animated Button 1 */}
           <button className="relative group overflow-hidden px-6 py-4 rounded-md text-sm font-semibold text-white hover:text-[#004755] border-2">
-            <a href="/" className="flex items-center relative z-10">
+            <a href="/registration" className="flex items-center relative z-10">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"

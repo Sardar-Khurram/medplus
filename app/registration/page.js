@@ -13,8 +13,15 @@ const Registration = () => {
     const { register, handleSubmit, trigger, watch, formState: { errors } } = useForm();
 
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        let r = await fetch("http://localhost:3000/", {
+            method: "POST",
+            headers:{"Content-Type" : "application/json"},
+            body: JSON.stringify(data),
+        });
+
+        let res = await r.text()
+        console.log(res)
     }
 
     var [count, setCount] = useState(1)
@@ -118,7 +125,7 @@ const Registration = () => {
                                         {...register("clinic_name", { required: "Clinic Name is required" })}
                                         type="text"
                                         placeholder="Clinic Name"
-                                        className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.clinic_name? "border-red-500 focus:ring-red-500":"border-slate-300 focus:ring-[#01a0a9]"
+                                        className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.clinic_name ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:ring-[#01a0a9]"
                                             } bg-gray-50`}
                                     />
                                     {errors.clinic_name && (

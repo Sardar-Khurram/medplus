@@ -78,7 +78,7 @@ const Features = () => {
           </div>
 
           {/* Card 6 */}
-          <a href='/' className="mx-3 md:w-[32vw] lg:w-[26vw] xl:w-[22vw] borderter flex flex-col items-center justify-center py-3 bg-[#01a0a9] shadow-2xl text-white rounded-3xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#01a1a9e0] group">
+          <a href='/registration' className="mx-3 md:w-[32vw] lg:w-[26vw] xl:w-[22vw] borderter flex flex-col items-center justify-center py-3 bg-[#01a0a9] shadow-2xl text-white rounded-3xl overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#01a1a9e0] group">
             {/* Animated background layer */}
             <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
 

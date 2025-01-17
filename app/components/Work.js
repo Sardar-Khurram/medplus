@@ -2,12 +2,12 @@ import React from 'react'
 
 const Work = () => {
   return (
-    <div className="" >
+    <div className="id='works'" >
 
       <div  className='text-center md:text-left flex items-center justify-center flex-col gap-3 md:bg-white rounded-3xl inter m-14 lg:my-20 py-5 lg:py-20'>
 
         {/* Heading 1 */}
-        <h1 id='works' className="my-5 text-2xl lg:text-3xl  font-bold text-[#01a0a9] uppercase">WORK PROCESS</h1>
+        <h1 className="my-5 text-2xl lg:text-3xl  font-bold text-[#01a0a9] uppercase">WORK PROCESS</h1>
 
         {/* Introductory heading */}
         <h1 className="text-4xl lg:text-[40px] xl:text-5xl 2xl:text-7xl font-bold lg:font-semibold ">
@@ -55,7 +55,7 @@ const Work = () => {
         <div className="flex flex-col lg:flex-row pt-6 items-center gap-6">
 
           {/* animated button */}
-          <a href='/' className="text-lg lg:text-2xl relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
+          <a href='/registration' className="text-lg lg:text-2xl relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
             {/* Animated background layer */}
             <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
             {/* Button text */}
