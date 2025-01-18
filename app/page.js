@@ -12,13 +12,11 @@ function App() {
 
   return (
     <div className="appBg">
-     <Header/>
      <Home/>
      <Features/>
      <Work/>
      <Services/>
      <Pricing/>
-     <Footer/>
     </div>
   )
 }

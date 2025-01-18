@@ -10,13 +10,13 @@ import { useForm } from "react-hook-form"
 
 const Registration = () => {
 
-    const { register, handleSubmit, trigger, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, trigger, watch, clearErrors, formState: { errors } } = useForm();
 
 
     const onSubmit = async (data) => {
         let r = await fetch("http://localhost:3000/", {
             method: "POST",
-            headers:{"Content-Type" : "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
 
@@ -30,42 +30,59 @@ const Registration = () => {
     const btnRef2 = useRef()
     const btnRef3 = useRef()
 
-    const colorToggler = async (e) => {
-        if (e === 'next') {
-            let isValid = false;
+    const colorToggler = async (action) => {
+        let isValid = false;
 
+        if (action === 'next') {
             if (count === 1) {
-                // Validate Step 1 fields
+                // Validate Step 1 fields only when trying to move to Step 2
                 isValid = await trigger(["clinic_name", "reg_no"]);
                 if (isValid) {
-                    btnRef2.current.style.backgroundColor = '#01a0a9';
-                    setCount(2);
+                    clearErrors(); // Clear errors before moving to Step 2
+                    btnRef2.current.style.backgroundColor = '#01a0a9'; // Update Step 2 button color
+                    setCount(2); // Move to Step 2
+                } else {
+                    alert("Please complete Step 1 fields correctly.");
+                    return;
                 }
             } else if (count === 2) {
-                // Validate Step 2 fields
-                isValid = await trigger(["city", "province", "state", "postal", "address"]);
+                // Validate Step 2 fields only when trying to move to Step 3
+                isValid = await trigger(["city", "province", "state", "postal", "address", "email", "phone"]);
                 if (isValid) {
-                    btnRef3.current.style.backgroundColor = '#01a0a9';
-                    setCount(3);
+                    clearErrors(); // Clear errors before moving to Step 3
+                    btnRef3.current.style.backgroundColor = '#01a0a9'; // Update Step 3 button color
+                    setCount(3); // Move to Step 3
+                } else {
+                    alert("Please complete Step 2 fields correctly.");
+                    return;
                 }
             } else if (count === 3) {
-                let userConfirmed = window.confirm(
-                    "You are about to submit the form. Are you sure your credentials are correct?"
-                );
-                if (userConfirmed) {
-                    handleSubmit(onSubmit)();
-                    setCount(4);
+                // Validate subscription plan in Step 3
+                isValid = await trigger(["selected_plan"]);
+                if (isValid) {
+                    // Confirm submission
+                    const userConfirmed = window.confirm(
+                        "You are about to submit the form. Are you sure your credentials are correct?"
+                    );
+                    if (userConfirmed) {
+                        handleSubmit(onSubmit)(); // Submit the form
+                        setCount(4); // Move to the Thank You page
+                    }
+                } else {
+                    alert("Please select a subscription plan.");
+                    return;
                 }
             }
         }
 
-        if (e === 'previous') {
+        if (action === 'previous') {
+            clearErrors(); // Clear errors when going back
             if (count === 2) {
-                btnRef2.current.style.backgroundColor = '#ffffff';
-                setCount(1);
+                btnRef2.current.style.backgroundColor = '#ffffff'; // Reset Step 2 button color
+                setCount(1); // Move to Step 1
             } else if (count === 3) {
-                btnRef3.current.style.backgroundColor = '#ffffff';
-                setCount(2);
+                btnRef3.current.style.backgroundColor = '#ffffff'; // Reset Step 3 button color
+                setCount(2); // Move to Step 2
             }
         }
     };
@@ -73,9 +90,9 @@ const Registration = () => {
 
 
 
+
     return (
         <div className="">
-            <Header />
 
             {/* Registration part Body */}
             <div className="flex justify-center items-center p-5 md:p-32 bg-[#d5fffd] text-center">
@@ -187,21 +204,6 @@ const Registration = () => {
                                 {/* Address Section */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                                    {/* City */}
-                                    <label className="flex flex-col w-full">
-                                        <span className="text-gray-700 font-medium mb-2">City</span>
-                                        <input
-                                            {...register("city", { required: "City is required" })}
-                                            type="text"
-                                            placeholder="City name"
-                                            className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.city ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:ring-[#01a0a9]"
-                                                } bg-gray-50`}
-                                        />
-                                        {errors.city && (
-                                            <span className="text-red-500 text-sm mt-1">{errors.city.message}</span>
-                                        )}
-                                    </label>
-
                                     {/* Province */}
                                     <label className="flex flex-col w-full">
                                         <span className="text-gray-700 font-medium mb-2">Province</span>
@@ -229,6 +231,21 @@ const Registration = () => {
                                         />
                                         {errors.state && (
                                             <span className="text-red-500 text-sm mt-1">{errors.state.message}</span>
+                                        )}
+                                    </label>
+
+                                    {/* City */}
+                                    <label className="flex flex-col w-full">
+                                        <span className="text-gray-700 font-medium mb-2">City</span>
+                                        <input
+                                            {...register("city", { required: "City is required" })}
+                                            type="text"
+                                            placeholder="City name"
+                                            className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.city ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:ring-[#01a0a9]"
+                                                } bg-gray-50`}
+                                        />
+                                        {errors.city && (
+                                            <span className="text-red-500 text-sm mt-1">{errors.city.message}</span>
                                         )}
                                     </label>
 
@@ -261,12 +278,42 @@ const Registration = () => {
                                             <span className="text-red-500 text-sm mt-1">{errors.address.message}</span>
                                         )}
                                     </label>
+
+                                    {/* Email */}
+                                    <label className="flex flex-col w-full">
+                                        <span className="text-gray-700 font-medium mb-2">Email</span>
+                                        <input
+                                            {...register("email", { required: "Clininc admin email is required" })}
+                                            type="text"
+                                            placeholder="Clinic Admin Email"
+                                            className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.email ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:ring-[#01a0a9]"
+                                                } bg-gray-50`}
+                                        />
+                                        {errors.email && (
+                                            <span className="text-red-500 text-sm mt-1">{errors.email.message}</span>
+                                        )}
+                                    </label>
+
+                                    {/* phone */}
+                                    <label className="flex flex-col w-full">
+                                        <span className="text-gray-700 font-medium mb-2">Phone</span>
+                                        <input
+                                            {...register("phone", { required: "Phone No is required" })}
+                                            type="text"
+                                            placeholder="+92000-0000000"
+                                            className={`border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.phone ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:ring-[#01a0a9]"
+                                                } bg-gray-50`}
+                                        />
+                                        {errors.phone && (
+                                            <span className="text-red-500 text-sm mt-1">{errors.phone.message}</span>
+                                        )}
+                                    </label>
                                 </div>
                             </div>
                         }
 
 
-                        {/* component3 */}
+                        {/* Component 3 */}
                         {count === 3 && (
                             <div className="text-left">
                                 {/* Image Container */}
@@ -276,28 +323,33 @@ const Registration = () => {
                                         {
                                             id: "basic",
                                             title: "Basic",
-                                            description: "Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.",
+                                            description:
+                                                "Access essential healthcare services remotely with virtual consultations, basic health checkups, and easy-to-use digital tools.",
                                             price: "$49",
                                             per: "month",
                                             benefits: [
-                                                "In-clinic and remote.",
-                                                "Innovative digital tools.",
-                                                "Flexible access.",
-                                                "Expert healthcare professionals.",
+                                                "Number of Doctors Allowed: 1.",
+                                                "Number of Patients Allowed: Up to 50.",
+                                                "Storage Limit: 100 GB",
+                                                "Branding: No branding allowed for the clinic.",
                                             ],
                                             imgSrc: "/pricing (1).png",
                                         },
                                         {
                                             id: "pro",
                                             title: "Pro",
-                                            description: "Perfect for startups and small clinics looking to offer remote care to their patients, with advanced features and personalized support.",
+                                            description:
+                                                "Perfect for startups and small clinics looking to offer remote care to their patients, with advanced features and personalized support.",
                                             price: "$199",
                                             per: "month",
                                             benefits: [
                                                 "Up to 10 telemedicine consultations per month.",
-                                                "Remote health monitoring kits for patients.",
+                                                "Video Consultation Hours: Up to 10 hours per month.",
                                                 "Electronic health record (EHR) integration.",
-                                                "Dedicated account manager and tech support.",
+                                                "Number of Doctors Allowed: 10.",
+                                                "Number of Patients Allowed: Up to 150",
+                                                "Storage Limit: 200 GB",
+                                                "Branding: No branding allowed for the clinic",
                                             ],
                                             imgSrc: "/pricing (2).png",
                                             tag: "Popular",
@@ -305,14 +357,19 @@ const Registration = () => {
                                         {
                                             id: "premium",
                                             title: "Premium",
-                                            description: "Access premium healthcare services remotely with virtual consultations, advanced tools, and full-featured support.",
+                                            description:
+                                                "Access premium healthcare services remotely with virtual consultations, advanced tools, and full-featured support.",
                                             price: "$499",
                                             per: "month",
                                             benefits: [
-                                                "In-clinic and remote.",
-                                                "Innovative digital tools.",
-                                                "Flexible access.",
-                                                "Expert healthcare professionals.",
+                                                "Unlimited telemedicine consultations per month.",
+                                                "Video Consultation Hours.",
+                                                "Electronic health record (EHR) integration.",
+                                                "Custom health reports and analytics.",
+                                                "Number of Doctors Allowed: 50.",
+                                                "Number of Patients Allowed: Up to 500.",
+                                                "Unlimited Storage",
+                                                "Branding: full Branding Allowed",
                                             ],
                                             imgSrc: "/pricing (3).png",
                                         },
@@ -348,9 +405,7 @@ const Registration = () => {
                                                 </div>
 
                                                 {/* Description */}
-                                                <p className="text-left z-40 text-[#e3e0e0] text-sm">
-                                                    {plan.description}
-                                                </p>
+                                                <p className="text-left z-40 text-[#e3e0e0] text-sm">{plan.description}</p>
                                             </div>
 
                                             {/* Middle Part */}
@@ -362,9 +417,7 @@ const Registration = () => {
                                                 </h1>
 
                                                 {/* Why Choose Us */}
-                                                <h1 className="text-white z-40 text-base font-bold text-left">
-                                                    Why Choose us?
-                                                </h1>
+                                                <h1 className="text-white z-40 text-base font-bold text-left">Why Choose us?</h1>
 
                                                 {/* Benefits */}
                                                 {plan.benefits.map((text, idx) => (
@@ -377,18 +430,24 @@ const Registration = () => {
                                                 ))}
                                             </div>
 
-                                            {/* Button */}
+                                            {/* Button
                                             <a
                                                 href="/"
                                                 className="text-center text-xs lg:text-sm relative overflow-hidden px-12 py-2 font-semibold text-[#01a0a9] bg-white rounded-lg mx-auto transition-all duration-500 group"
                                             >
                                                 <span className="relative">Get Started</span>
-                                            </a>
+                                            </a> */}
                                         </div>
                                     ))}
                                 </div>
+
+                                {/* Error Message */}
+                                {errors.selected_plan && (
+                                    <p className="text-red-500 text-sm mt-2">{errors.selected_plan.message}</p>
+                                )}
                             </div>
                         )}
+
 
 
 
@@ -467,7 +526,6 @@ const Registration = () => {
                 </div>
             </div>
 
-            <Footer />
         </div>
     )
 }

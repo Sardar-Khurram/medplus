@@ -1,8 +1,17 @@
 'use client'
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from "next/navigation"; 
 
 const Header = () => {
+
+  const pathname = usePathname()
+
+  // Determine button content and URL based on the current route
+  const buttonConfig =
+    pathname === "/registration"
+      ? { content: "Login to account", url: "/login" }
+      : { content: "Register Your Clinic", url: "/registration" };
 
   const navRef = useRef(null);
 
@@ -112,11 +121,11 @@ const Header = () => {
             </a>
 
             {/* animated button */}
-            <a href='/registration' className="text-sm relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
+            <a href={buttonConfig.url} className="text-sm relative overflow-hidden px-6 py-4 font-semibold text-white bg-[#01a0a9] rounded-md transition-all duration-500 group">
               {/* Animated background layer */}
               <span className="absolute inset-0 w-full h-full bg-black transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
               {/* Button text */}
-              <span className="relative z-10">Register Your Clinic</span>
+              <span className="relative z-10">{buttonConfig.content}</span>
             </a>
 
           </div>
