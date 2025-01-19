@@ -1,4 +1,4 @@
-import React  from "react"
+import React from "react"
 import './globals.css'
 import Header from "./components/Header"
 import Home from "./components/Home"
@@ -12,11 +12,13 @@ function App() {
 
   return (
     <div className="appBg">
-     <Home/>
-     <Features/>
-     <Work/>
-     <Services/>
-     <Pricing/>
+      <Header />
+      <Home />
+      <Features />
+      <Work />
+      <Services />
+      <Pricing />
+      <Footer />
     </div>
   )
 }
