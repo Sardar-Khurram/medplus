@@ -58,7 +58,7 @@ const Registration = () => {
                 }
             } else if (count === 3) {
                 // Validate subscription plan in Step 3
-                isValid = await trigger(["selected_plan"]);
+                isValid = await trigger(["selected_plan","files"]);
                 if (isValid) {
                     // Confirm submission
                     const userConfirmed = window.confirm(
@@ -69,7 +69,7 @@ const Registration = () => {
                         setCount(4); // Move to the Thank You page
                     }
                 } else {
-                    alert("Please select a subscription plan.");
+                    alert("Subscription plan and file attachment both are mandatory.");
                     return;
                 }
             }
@@ -93,6 +93,7 @@ const Registration = () => {
 
     return (
         <div className="">
+            <Header />
 
             {/* Registration part Body */}
             <div className="flex justify-center items-center p-5 md:p-32 bg-[#d5fffd] text-center">
@@ -315,7 +316,7 @@ const Registration = () => {
 
                         {/* Component 3 */}
                         {count === 3 && (
-                            <div className="text-left">
+                            <div className="text-left flex flex-col items-center justify-center">
                                 {/* Image Container */}
                                 <div className="imageConatiner sm:p-10 lg:p-16 flex flex-wrap items-center justify-center gap-20 flex-col lg:flex-row">
                                     {/* Subscription Plans */}
@@ -445,6 +446,52 @@ const Registration = () => {
                                 {errors.selected_plan && (
                                     <p className="text-red-500 text-sm mt-2">{errors.selected_plan.message}</p>
                                 )}
+
+                                <label className="flex flex-col w-[60vw] border-2 border-dashed border-gray-300 rounded-lg p-6 bg-gray-50 hover:border-[#01a0a9] hover:bg-gray-100 cursor-pointer">
+                                    <div className="flex flex-col items-center text-center space-y-2">
+                                        {/* Upload Icon */}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            strokeWidth={2}
+                                            stroke="currentColor"
+                                            className="w-10 h-10 text-[#7B61FF]"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M12 4v16m8-8H4m16 0a8 8 0 10-16 0 8 8 0 0016 0z"
+                                            />
+                                        </svg>
+                                        {/* Text */}
+                                        <h3 className="font-medium text-gray-900">
+                                            Drag and drop files or{" "}
+                                            <span className="text-[#7B61FF] underline">Browse.</span>
+                                        </h3>
+                                        <p className="text-sm text-gray-500">
+                                            Supported formats: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word, PPT
+                                        </p>
+                                    </div>
+                                    {/* File Input */}
+                                    <input
+                                        {...register("files", {
+                                            required: "File attachment is required",
+                                        })}
+                                        type="file"
+                                        multiple
+                                        className="hidden"
+                                    />
+                                    {/* Error Message */}
+                                    {errors.files && (
+                                        <span className="text-red-500 text-sm mt-2">
+                                            {errors.files.message}
+                                        </span>
+                                    )}
+                                </label>
+
+
+
                             </div>
                         )}
 
@@ -525,8 +572,9 @@ const Registration = () => {
 
                 </div>
             </div>
-
+            <Footer />
         </div>
+
     )
 }
 
