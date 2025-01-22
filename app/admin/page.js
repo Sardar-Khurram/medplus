@@ -79,7 +79,7 @@ const page = () => {
       </div>
 
       {/* Admin Information */}
-      <div className="bg-[#ffffff] border-2 md:w-[60vw] shadow-lg hover:shadow-xl transition-transform duration-200 hover:scale-105 rounded-lg p-8 flex flex-col-reverse md:flex-row items-center justify-around gap-6">
+      <div className="bg-[#ffffff] border-2 md:w-[60vw] shadow-lg hover:shadow-xl transition-transform duration-200 hover:scale-105 rounded-full p-8 flex flex-col-reverse md:flex-row items-center justify-around gap-6">
         {/* User Info */}
         <div className="text-center md:text-left">
           <p className="text-gray-500 text-sm">Welcome back,</p>
@@ -117,7 +117,37 @@ const page = () => {
       {/* Admin Activities */}
       <div className="flex flex-col gap-5 lg:flex-row m-4 my-14">
 
-        <div className="bg-white w-full lg:w-[30vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
+        <div className="bg-white border-2  w-full lg:w-[30vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
+          {/* Icon */}
+          <div className="w-12 h-12 flex items-center justify-center bg-[#01656b] rounded-md">
+            <img src="/slider.svg" alt="Users Icon" className="w-6 h-6 invert" />
+          </div>
+
+          {/* Content */}
+          <div className="flex-1">
+            <h2 className="text-lg font-bold text-[#014c53]">General Settings</h2>
+            <p className="text-gray-500 mt-1">
+              Manage general system settings, preferences, and configurations for the clinic.
+            </p>
+            <div className="mt-3 flex gap-4">
+              <span className="font-bold">Quick links:</span>
+              <a
+                href="/staff-roles"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
+              >
+                Subscription plans
+              </a>
+              <a
+                href="/user-permissions"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
+              >
+                Working hours
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white border-2  w-full lg:w-[30vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
           {/* Icon */}
           <div className="w-12 h-12 flex items-center justify-center bg-[#01656b] rounded-md">
             <img src="/2users.svg" alt="Users Icon" className="w-6 h-6 invert" />
@@ -130,16 +160,16 @@ const page = () => {
               Manage user roles, permissions, and access levels for clinic staff.
             </p>
             <div className="mt-3 flex gap-4">
-              <span className="font-semibold">Quick links:</span>
+              <span className="font-bold">Quick links:</span>
               <a
                 href="/staff-roles"
-                className="text-[#007bff] hover:underline transition-colors"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
               >
                 Staff roles
               </a>
               <a
                 href="/user-permissions"
-                className="text-[#007bff] hover:underline transition-colors"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
               >
                 User permissions
               </a>
@@ -147,61 +177,32 @@ const page = () => {
           </div>
         </div>
 
-        <div className="bg-white w-full lg:w-[30vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
+        <div className="bg-white w-full border-2 lg:w-[34vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
           {/* Icon */}
           <div className="w-12 h-12 flex items-center justify-center bg-[#01656b] rounded-md">
-            <img src="/2users.svg" alt="Users Icon" className="w-6 h-6 invert" />
+            <img src="/calendar.svg" alt="Users Icon" className="w-6 h-6 invert" />
           </div>
 
           {/* Content */}
           <div className="flex-1">
-            <h2 className="text-lg font-bold text-[#014c53]">Users Management</h2>
+            <h2 className="text-lg font-bold text-[#014c53]">
+              Appointments</h2>
             <p className="text-gray-500 mt-1">
-              Manage user roles, permissions, and access levels for clinic staff.
+              View, schedule, and manage patient appointments efficiently.
             </p>
-            <div className="mt-3 flex gap-4">
-              <span className="font-semibold">Quick links:</span>
+            <div className="mt-3 flex gap-2">
+              <span className="font-bold">Quick links:</span>
               <a
                 href="/staff-roles"
-                className="text-[#007bff] hover:underline transition-colors"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
               >
-                Staff roles
+                New Appointments
               </a>
               <a
                 href="/user-permissions"
-                className="text-[#007bff] hover:underline transition-colors"
+                className="text-[#007bff] text-sm hover:underline transition-colors"
               >
-                User permissions
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white w-full lg:w-[30vw] shadow-md rounded-lg p-4 flex flex-col gap-4">
-          {/* Icon */}
-          <div className="w-12 h-12 flex items-center justify-center bg-[#01656b] rounded-md">
-            <img src="/2users.svg" alt="Users Icon" className="w-6 h-6 invert" />
-          </div>
-
-          {/* Content */}
-          <div className="flex-1">
-            <h2 className="text-lg font-bold text-[#014c53]">Users Management</h2>
-            <p className="text-gray-500 mt-1">
-              Manage user roles, permissions, and access levels for clinic staff.
-            </p>
-            <div className="mt-3 flex gap-4">
-              <span className="font-semibold">Quick links:</span>
-              <a
-                href="/staff-roles"
-                className="text-[#007bff] hover:underline transition-colors"
-              >
-                Staff roles
-              </a>
-              <a
-                href="/user-permissions"
-                className="text-[#007bff] hover:underline transition-colors"
-              >
-                User permissions
+                Appointments history
               </a>
             </div>
           </div>
